@@ -1,0 +1,11 @@
+div{
+  box-sizing: border-box;
+  padding:5px;
+  & span {
+    line-height: 15px;
+  }
+  & p{
+  margin-top:10px;
+    font-size: 12px;
+}
+}

@@ -1,6 +1,88 @@
-$color:yellow;
+$color:crimson;
 $size:24px;
 p{
 	color:$color;
 	font-size:$size;
+}
+.jsx{
+	color:chocolate;
+	font-size: 28px;
+	text-align: center;
+}
+.img{
+	width:200px;
+	height:300px;
+}
+.d1{
+	display:none;
+}
+.d0{
+	display:block;
+}
+span{
+	width:100px;
+}
+.on{
+	color:chartreuse;
+}
+
+.lx-model{
+	margin:50px auto;
+	width:520px;
+	border:1px solid #ccc;
+	border-radius: 3px;
+	background-color: white;
+	font-size: 14px;
+	.header{
+		line-height: 50px;
+		border-bottom: 1px solid #ccc;
+		height:50px;
+		overflow: hidden;
+		&>span:first-child{
+			padding-left:20px;
+			text-align: center;
+		}
+		&>span:last-child{
+			float:right;
+			text-align: center;
+		}
+	}
+	.content{
+		box-sizing:border-box;
+		line-height:50px;
+		padding: 20px;
+		font-size: 12px;
+	}
+	.footer{
+		line-height: 50px;
+		box-sizing: border-box;
+		padding:0 25px;
+		border-top:1px solid #ccc;
+		div{
+			&>span{
+				display:inline-block;
+				padding: 0 15px;
+				line-height:30px;
+				font-size: 12px;
+				text-align: center;
+				border:1px solid #ccc;
+				box-sizing: border-box;
+				float:right;
+				margin-top:10px;
+				margin-left:10px;
+				border-radius:3px;
+				cursor:pointer;
+			}
+			&>span.delete{
+				background-color: red;
+				color:white;
+				border-color: red;
+			}
+			&>span.info{
+				background-color: blue;
+				color:white;
+				border-color: blue;
+			}
+		}
+	}
 }

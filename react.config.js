@@ -3,10 +3,10 @@ const path = require('path')
 // 引入webpack核心库
 // const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const ESlintWebpackPlugin=require('eslint-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const ESlintWebpackPlugin = require('eslint-webpack-plugin')
 
-const config={
+const config = {
 	// 入口，字符串写法
 	// entry: path.resolve(__dirname, './src/main.js'),
 	// 对象写法
@@ -33,19 +33,25 @@ const config={
 	module: {
 		// Webpack要根据你定义的规则，来编译各种不同后缀的模块
 		rules: [
-			{ test: /\.css$/, use: ['style-loader', 'css-loader'] },
+			{test: /\.css$/, use: ['style-loader', 'css-loader']},
 			// node-sass是sass编译器，它的作用是把sass-loader加载进来的scss文件编译成css文件。
-			{ test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-			{test:/\.(jpg|png|jpeg|icon|ico|fig)$/,use:['file-loader']},
-			{test:/\.(js|jsx)$/,use:['babel-loader'],exclude:/^node_modules$/},
-			// {test:/\.js$/,use:['eslint-loader'],exclude:/^node_modules$/,enforce:'pre'}
+			{test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+			// {test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader']},
+			{test: /\.less$/, use: [{loader:'style-loader'}, {loader:'css-loader'}, {loader:'less-loader',options:{
+				lessOptions:{
+					javascriptEnabled: true
+				}
+					}}]},
+			{test: /\.(jpg|png|jpeg|icon|ico|fig)$/, use: ['file-loader']},
+			{test: /\.(js|jsx)$/, use: ['babel-loader'], exclude: /^node_modules$/},
+			{test: /\.js$/, use: ['eslint-loader'], exclude: /^node_modules$/, enforce: 'pre'}
 		]
 	},
-	resolve:{
-		alias:{
-			'@':path.resolve(__dirname,'src')
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src')
 		},
-		extensions:['.js','jsx']
+		extensions: ['.js', '.jsx', '.ts']
 	},
 }
 
@@ -100,17 +106,25 @@ const config={
 // 	devtool:'source-map',
 // }
 
-if(process.env.NODE_ENV==="development"){
-	config.devServer={
+if (process.env.NODE_ENV === "development") {
+	config.devServer = {
 		port: 9999,
 		open: true, // 打开默认浏览器
 		hot: true, // 本地热更新
-		overlay:{
-			errors:true
+		overlay: {
+			errors: true
 		}, //错误遮挡层
-		contentBase: path.resolve(__dirname, './public')
+		contentBase: path.resolve(__dirname, './public'),
+		proxy:{
+			'/soso':{
+				target:'https://c.y.qq.com',
+				changeOrigin:true,
+				ws:true
+			}
+		}
+
 	},
-	config.devtool='source-map'
+		config.devtool = 'source-map'
 }
 
-module.exports=config
+module.exports = config

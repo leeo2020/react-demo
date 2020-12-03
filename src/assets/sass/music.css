@@ -1,0 +1,10 @@
+div {
+  box-sizing: border-box;
+  padding: 5px; }
+  div span {
+    line-height: 15px; }
+  div p {
+    margin-top: 10px;
+    font-size: 12px; }
+
+/*# sourceMappingURL=music.css.map */

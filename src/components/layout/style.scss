@@ -1,0 +1,60 @@
+html, body {
+  padding: 0;
+  margin: 0
+}
+
+.lx-layout {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+
+  & > .sider {
+    position: absolute;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: #999;
+
+    & > a {
+      display: block;
+      line-height: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: darkslategrey;
+      text-decoration: none;
+      border-bottom:1px solid #aaa ;
+    }
+
+    & > a.on {
+      color: crimson;
+    }
+  }
+
+  & > .header {
+    position: absolute;
+    left: 150px;
+    right: 0;
+    top: 0;
+    height: 65px;
+    background-color: #bbb;
+  }
+
+  & > .main {
+    position: absolute;
+    left: 150px;
+    right: 0;
+    top: 65px;
+    bottom: 0;
+    background-color: #ddd;
+    box-size:border-box;
+    margin:15px;
+    border-radius:10px;
+  }
+}
